@@ -1,13 +1,14 @@
-const express = require('express')
-const cors = require('cors')
-const dotenv = require('dotenv')
-const bodyParser = require('body-parser')
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const bookingRoutes = require('./bookingRoutes');
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
+const app = express();
 
 app.use(cors({
   origin: "http://127.0.0.1:5501",
@@ -20,8 +21,12 @@ app.use('/api/bookings', bookingRoutes);
 
 app.get('/', (req, res) => {
   res.send('Jagreeti Salon Backend Running')
-})
+});
 
+
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("Database connected successfully!"))
+.catch((err) => console.error("Database connection error:", err));
 
 
 const PORT = process.env.PORT ||5000;
