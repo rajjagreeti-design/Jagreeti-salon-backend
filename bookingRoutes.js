@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
+
+const Booking = require('./models/Booking');
 router.get('/', (req, res) => {
     res.send('Main booking list');
 });
 
 const nodemailer = require('nodemailer');
 
-router.post('/', async (req, res) => {
-  try {
     const newBooking = new Booking({
       fullname,
       phone,
