@@ -8,21 +8,22 @@ const nodemailer = require('nodemailer');
 
 router.post('/', async (req, res) => {
   try {
-    const {
+    const newBooking = new Booking({
       fullname,
       phone,
       date,
       location,
       service,
       totalPrice,
-    } = req.body
+    });
+    const savedData = await newBooking.save();
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
+        service: 'gmail',
+        auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
-      },
+      }
     })
 
     const mailOptions = {
@@ -54,15 +55,17 @@ router.post('/', async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Appointment booked successfully!'
+      data: savedData
     });
   } catch (error) {
-    console.log(error)
+    console.error("Database error details:" , error);
 
     res.status(500).json({
         success: false,
-      message: 'Something went wrong',
-    })
+        message: 'Something went wrong',
+        error: error.message
+    });
   }
-})
+});
 
 module.exports = router;
