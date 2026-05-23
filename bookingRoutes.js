@@ -53,8 +53,8 @@ router.post('/', async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: 'Appointment booked successfully',
-    })
+      message: 'Appointment booked successfully!'
+    });
   } catch (error) {
     console.log(error)
 
