@@ -43,7 +43,13 @@ router.post('/', async (req, res) => {
       `,
     }
 
-    await transporter.sendMail(mailOptions)
+    await transporter.sendMail({
+      from: '...',
+      to: booking.email,
+      subject: 'Appointment Confirmed',
+      exit: '...'
+    });
+    
 
     res.status(200).json({
       success: true,
