@@ -57,7 +57,6 @@ router.post('/book', async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Appointment booked successfully!'
-      data: savedData
     });
   } catch (error) {
     console.error("Database error details:" , error);
