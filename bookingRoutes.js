@@ -7,7 +7,9 @@ router.get('/', (req, res) => {
 });
 
 const nodemailer = require('nodemailer');
-
+router.post('/book', async (req, res) => {
+  try {
+    const { fullname, phone, date, location, service, totalPrice } = req.body;
     const newBooking = new Booking({
       fullname,
       phone,
