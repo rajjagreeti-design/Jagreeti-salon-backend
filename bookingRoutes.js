@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Booking = require('./booking');
+const Booking = require('./models/booking');
 router.get('/', (req, res) => {
     res.send('Main booking list');
 });
