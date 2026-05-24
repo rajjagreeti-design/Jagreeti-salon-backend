@@ -1,7 +1,8 @@
-const mongoose = require('mongoose');
+const express = require('express');
 const router = express.Router();
-
+const mongoose = require('mongoose');
 const Booking = require('./booking');
+
 router.get('/', (req, res) => {
     res.send('Main booking list');
 });
