@@ -69,5 +69,4 @@ router.post('/book', async (req, res) => {
     });
   }
 });
-
-module.exports = mongoose.model('Booking', bookingSchema);
+module.exports = router;
