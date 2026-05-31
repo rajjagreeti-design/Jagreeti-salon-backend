@@ -18,11 +18,11 @@ router.post('/', async (req, res) => {
 
         // 2. Create and save the new booking into MongoDB
         const newBooking = new Booking({
-            fullName,
-            phoneNumber,
-            preferredDate,
-            serviceTypeLocation,
-            primaryService
+            fullName: req.body.fullName,
+            phoneNumber: req.body.phoneNumber,
+            preferredDate: req.body.preferredDate,
+            serviceTypeLocation: req.body.serviceTypeLocation,
+            primaryService: req.body.primaryService
         });
         const savedData = await newBooking.save();
 
